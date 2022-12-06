@@ -9,7 +9,7 @@ In the second round, your opponent will choose Paper (B), and you should choose 
 The third round is a draw with both players choosing Scissors, giving you a score of 3 + 3 = 6.
 In this example, if you were to follow the strategy guide, you would get a total score of 15 (8 + 1 + 6).
 
-Part I: What would your total score be if everything goes exactly according to your strategy guide?
+Part I: What would your total score be if everything goes exactly according to your strategy guide? => 10718
 
 -----------------------------------------------------------------
 
@@ -22,10 +22,11 @@ In the second round, your opponent will choose Paper (B), and you choose Rock so
 In the third round, you will defeat your opponent's Scissors with Rock for a score of 1 + 6 = 7.
 Now that you're correctly decrypting the ultra top secret strategy guide, you would get a total score of 12.
 
-Part II: Following the Elf's instructions for the second column, what would your total score be if everything goes exactly according to your strategy guide?
+Part II: Following the Elf's instructions for the second column, what would your total score be if everything goes exactly according to your strategy guide? => 14652
 */
 
-const { CHOICES, TEST_INPUT } = require("./input");
+import { CHOICES, TEST_INPUT } from "./input";
+
 
 const player1 = new Map();
 const player2 = new Map();
@@ -38,12 +39,11 @@ player2.set("X", "Rock");
 player2.set("Y", "Paper");
 player2.set("Z", "Scissors");
 
-function parseInput(str) {
-  const choices = str.split(/\r?\n/).map((item) => item.split(" "));
-  return choices;
+function parseChoices(choices: string) {
+  return  choices.split(/\r?\n/).map((item) => item.split(" "));
 }
 
-function scoreOfChoice(choice) {
+function scoreOfChoice(choice: string) {
   let score = 0;
   if (choice === "Rock") {
     score = 1;
@@ -55,7 +55,7 @@ function scoreOfChoice(choice) {
   return score;
 }
 
-function resultOfRound(choice1, choice2) {
+function resultOfRound(choice1: string, choice2: string) {
   let score1 = scoreOfChoice(choice1);
   let score2 = scoreOfChoice(choice2);
   
@@ -75,11 +75,11 @@ function resultOfRound(choice1, choice2) {
   }
 }
 
-function findMyScore(player) {
-  const choices = parseInput(CHOICES);
+function findMyScore(player: number) {
+  const choices = parseChoices(CHOICES);
   const results = choices.map((item) => resultOfRound(player1.get(item[0]), player2.get(item[1])));
   const myScore = results.reduce((acc, item) => acc + item[player], 0);
-  console.log(results, myScore);
+  console.log(myScore);
   return myScore;
 }
 
@@ -93,13 +93,13 @@ roundStatus.set("Y", "draw");
 roundStatus.set("Z", "win");
 
 
-function resultOfRound2(choice1, outcome) {
+function resultOfRound2(choice: string, outcome: string) {
     let score = 0;
     if(outcome === "draw") {
-        score = scoreOfChoice(choice1) + 3;
+        score = scoreOfChoice(choice) + 3;
     }
     if(outcome === "win") {
-        switch(choice1){
+        switch(choice){
             case "Rock":
                score =  scoreOfChoice("Paper") + 6;
                 break;
@@ -112,7 +112,7 @@ function resultOfRound2(choice1, outcome) {
         }
     }
     if(outcome === "lose") {
-        switch(choice1){
+        switch(choice){
             case "Rock":
                score =  scoreOfChoice("Scissors");
                 break;
@@ -128,10 +128,10 @@ function resultOfRound2(choice1, outcome) {
 }
 
 function findMyScore2() {
-    const choices = parseInput(CHOICES);
+    const choices = parseChoices(CHOICES);
     const results = choices.map((item) => resultOfRound2(player1.get(item[0]), roundStatus.get(item[1])));
     const myScore = results.reduce((acc, currentValue) => acc + currentValue, 0);
-    console.log(results, myScore);
+    console.log(myScore);
     return myScore;
   }
 

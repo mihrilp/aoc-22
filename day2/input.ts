@@ -1,8 +1,8 @@
-const TEST_INPUT = `A Y
+export const TEST_INPUT = `A Y
 B X
 C Z`;
 
-const CHOICES = `C Y
+export const CHOICES = `C Y
 C Z
 C Z
 C Z
@@ -2502,8 +2502,3 @@ A Z
 C Z
 C Z
 A Z`;
-
-module.exports = {
-  CHOICES,
-  TEST_INPUT,
-};
