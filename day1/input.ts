@@ -1,4 +1,4 @@
-const CALORIES_OF_ELVES = `13399
+export const CALORIES_OF_ELVES = `13399
 13677
 11945
 9861
@@ -2252,7 +2252,7 @@ const CALORIES_OF_ELVES = `13399
 5321
 1877`;
 
-const TEST_INPUT = `1000
+export const TEST_INPUT = `1000
 2000
 3000
 
@@ -2267,7 +2267,3 @@ const TEST_INPUT = `1000
 
 10000`;
 
-module.exports = {
-  CALORIES_OF_ELVES,
-  TEST_INPUT,
-};
