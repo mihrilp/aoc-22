@@ -4,5 +4,8 @@
   "description": "Advent of Code 2022",
   "main": "index.js",
   "author": "mihrilp",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.9.3"
+  }
 }
