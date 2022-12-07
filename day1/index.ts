@@ -1,4 +1,4 @@
-import  { CALORIES_OF_ELVES, TEST_INPUT } from "./input";
+import { CALORIES_OF_ELVES, TEST_INPUT } from "./input";
 
 function sumOfCalories(arr: number[]) {
   return arr.reduce((a: number, b: number) => a + b, 0);
@@ -28,6 +28,9 @@ function findMostCalories(totalCalories: string) {
 }
 
 findMostCalories(CALORIES_OF_ELVES);
+// puzzle answer: 75622.
+
+
 
 //part II
 function findTotalCaloriesOfTopThree(totalCalories: string) {
@@ -40,3 +43,4 @@ function findTotalCaloriesOfTopThree(totalCalories: string) {
 }
 
 findTotalCaloriesOfTopThree(CALORIES_OF_ELVES);
+// puzzle answer: 213159.

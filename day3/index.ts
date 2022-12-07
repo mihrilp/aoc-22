@@ -24,7 +24,7 @@ function findSumOfPriorities() {
   let commonItems: Array<string> = [];
   const rucksacks = parseRucksacks(RUCKSACKS);
   rucksacks.map(([s1, s2]) => {
-    for (let i=0; i < s1.length; i++) {
+    for (let i = 0; i < s1.length; i++) {
       if (s2.includes(s1[i])) {
         commonItems.push(s1[i]);
         s1 = s1.replaceAll(s1[i], "");
@@ -45,7 +45,7 @@ findSumOfPriorities();
 
 
 // Part II
-function sliceIntoChunks(arr:Array<string>, chunkSize:number) {
+function sliceIntoChunks(arr: Array<string>, chunkSize: number) {
   const res = [];
   for (let i = 0; i < arr.length; i += chunkSize) {
     const chunk = arr.slice(i, i + chunkSize);
@@ -59,10 +59,10 @@ function parseRucksacks2(rucksacks: string, chunkSize: number) {
 }
 
 function findSumOfPriorities2() {
-  let commonItems: Array<string>  = [];
+  let commonItems: Array<string> = [];
   const rucksacks = parseRucksacks2(RUCKSACKS, 3);
   rucksacks.map(([s1, s2, s3]) => {
-    for (let i=0; i < s1.length; i++) {
+    for (let i = 0; i < s1.length; i++) {
       if (s2.includes(s1[i]) && s3.includes(s1[i])) {
         commonItems.push(s1[i]);
         s1 = s1.replaceAll(s1[i], "");
